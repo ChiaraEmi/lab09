@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Random;
+import java.nio.file.Paths;
 
 /**
  * This class is a simple application that writes a random number on a file.
@@ -75,8 +76,16 @@ public class BadIOGUI {
 
         read.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(final ActionEvent e) {
-                System.out.println("Hello world!"); //NOPMD suppressed as it has to be printed in output 
+            public void actionPerformed(final ActionEvent event) {
+                try {
+                    final List<String> r = Files.readAllLines(Paths.get(PATH), StandardCharsets.UTF_8);
+                    for (final String s : r) {
+                        System.out.println(s); //NOPMD suppressed as it has to be printed in output
+                    }
+                } catch (final IOException e) {
+                    JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
             }
         });
     }
