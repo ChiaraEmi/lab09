@@ -72,6 +72,13 @@ public class BadIOGUI {
                 }
             }
         });
+
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                System.out.println("Hello world!"); //NOPMD suppressed as it has to be printed in output 
+            }
+        });
     }
 
     private void display() {
