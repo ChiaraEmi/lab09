@@ -12,11 +12,7 @@ public class Controller {
     private static final String PATH = System.getProperty("user.home")
             + System.getProperty("file.separator")
             + "output.txt";
-    private File currentFile;
-
-    Controller() {
-        this.currentFile = new File(PATH);
-    }
+    private File currentFile = new File(PATH);
 
     public void setCurrentFile(final File file) {
         this.currentFile = file;

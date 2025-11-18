@@ -40,7 +40,7 @@ public final class SimpleGUIWithFileChooser {
             @Override
             public void actionPerformed(final ActionEvent event) {
                 final JFileChooser fileChooser = new JFileChooser();
-                switch(fileChooser.showSaveDialog(frame)) {
+                switch (fileChooser.showSaveDialog(frame)) {
                     case JFileChooser.APPROVE_OPTION:
                         controller.setCurrentFile(fileChooser.getSelectedFile());
                         textField.setText(controller.getFilePath());
