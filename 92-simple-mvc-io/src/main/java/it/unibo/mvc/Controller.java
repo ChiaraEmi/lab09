@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class Controller {
     private static final String PATH = System.getProperty("user.home")
-            + File.separator
+            + System.getProperty("file.separator")
             + "output.txt";
     private File currentFile;
 
@@ -28,11 +28,11 @@ public class Controller {
         return this.currentFile;
     }
 
-    public String getFilePath (final File file) {
+    public String getFilePath() {
         return this.currentFile.getPath();
     }
 
-    public void saveString (final String text) throws IOException {
+    public void saveString(final String text) throws IOException {
         try (PrintStream ps = new PrintStream(currentFile, StandardCharsets.UTF_8)) {
             ps.print(text);
         }
