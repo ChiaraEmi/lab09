@@ -8,11 +8,15 @@ import java.io.File;
 public class Controller {
     private File currentFile;
 
-    public void setCurrentFile(final File file){
+    public void setCurrentFile(final File file) {
         this.currentFile = file;
     }
 
-    public File getCurrentFile(){
+    public File getCurrentFile() {
         return this.currentFile;
+    }
+
+    public String getFilePath (final File file) {
+        return this.currentFile.getPath();
     }
 }
