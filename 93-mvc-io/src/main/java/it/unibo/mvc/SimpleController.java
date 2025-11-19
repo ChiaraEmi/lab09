@@ -33,13 +33,8 @@ public final class SimpleController implements Controller {
         if (s == null) {
             throw new IllegalStateException();
         }
-        print(s);
+        System.out.println(s);
         this.history.add(s);
-    }
-    
-    @Override
-    public void print(String text) {
-        System.out.println(text);
     }
 
 }
