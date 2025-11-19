@@ -21,6 +21,9 @@ public final class SimpleGUIWithFileChooser {
     private final JFrame frame = new JFrame();
     private final Controller controller = new Controller();
 
+    /**
+     * Creates a new SimpleGUIWithFileChooser.
+     */
     public SimpleGUIWithFileChooser() {
         final JPanel mainPanel = new JPanel();
         final JPanel panel = new JPanel();
@@ -40,16 +43,16 @@ public final class SimpleGUIWithFileChooser {
             public void actionPerformed(final ActionEvent event) {
                 final JFileChooser fileChooser = new JFileChooser();
                 switch (fileChooser.showSaveDialog(frame)) {
-                    case JFileChooser.APPROVE_OPTION:
-                        controller.setCurrentFile(fileChooser.getSelectedFile());
-                        textField.setText(controller.getFilePath());
-                        break;
-                    case JFileChooser.CANCEL_OPTION:
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(frame, event, "Error", JOptionPane.ERROR_MESSAGE);
+                case JFileChooser.APPROVE_OPTION:
+                    controller.setCurrentFile(fileChooser.getSelectedFile());
+                    textField.setText(controller.getFilePath());
+                    break;
+                case JFileChooser.CANCEL_OPTION:
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(frame, event, "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }  
+            }
         });
     }
 
@@ -63,6 +66,11 @@ public final class SimpleGUIWithFileChooser {
         frame.setVisible(true);
     }
 
+    /**
+     * Launches the application.
+     *
+     * @param args ignored
+     */
     public static void main(final String... args) {
        new SimpleGUIWithFileChooser().display();
     }

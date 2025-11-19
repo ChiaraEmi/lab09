@@ -21,6 +21,9 @@ public final class SimpleGUI {
     private final JFrame frame = new JFrame();
     private final Controller controller = new Controller();
 
+    /**
+     * Creates a new SimpleGUI.
+     */
     public SimpleGUI() {
         final JPanel canvas = new JPanel();
         final JTextArea textArea = new JTextArea();
@@ -55,6 +58,11 @@ public final class SimpleGUI {
         frame.setVisible(true);
     }
 
+    /**
+     * Launches the application.
+     *
+     * @param args ignored
+     */
     public static void main(final String... args) {
        new SimpleGUI().display();
     }
