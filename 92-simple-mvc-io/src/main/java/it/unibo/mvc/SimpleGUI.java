@@ -18,10 +18,9 @@ import java.awt.event.ActionEvent;
  * 
  */
 public final class SimpleGUI {
-
     private final JFrame frame = new JFrame();
     private final Controller controller = new Controller();
-    
+
     public SimpleGUI() {
         final JPanel canvas = new JPanel();
         final JTextArea textArea = new JTextArea();
@@ -42,7 +41,7 @@ public final class SimpleGUI {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
-            }  
+            }
         });
     }
 

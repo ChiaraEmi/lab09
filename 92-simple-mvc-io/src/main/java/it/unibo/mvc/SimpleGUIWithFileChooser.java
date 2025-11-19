@@ -18,10 +18,9 @@ import java.awt.event.ActionEvent;
  * 
  */
 public final class SimpleGUIWithFileChooser {
-
     private final JFrame frame = new JFrame();
     private final Controller controller = new Controller();
-    
+
     public SimpleGUIWithFileChooser() {
         final JPanel mainPanel = new JPanel();
         final JPanel panel = new JPanel();
