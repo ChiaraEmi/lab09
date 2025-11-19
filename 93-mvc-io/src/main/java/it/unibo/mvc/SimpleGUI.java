@@ -5,7 +5,6 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -14,6 +13,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * A very simple program using a graphical interface.
@@ -26,7 +27,13 @@ public final class SimpleGUI {
 
     /**
      * Creates a new SimpleGUI.
+     * 
+     * @param c the controller instance
      */
+    @SuppressFBWarnings(
+        value = "EI2",
+        justification = "Suppressed beacuase of project specifications."
+    )
     public SimpleGUI(final Controller c) {
         this.controller = c;
         final JPanel mainPanel = new JPanel();
@@ -49,13 +56,8 @@ public final class SimpleGUI {
 
             @Override
             public void actionPerformed(final ActionEvent event) {
-                try {
-                    controller.setNextString(textField.getText());
-                    controller.printCurrentString();
-                } catch (final NullPointerException e) {
-                    JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
-                    e.printStackTrace(); // NOPMD: allowed as this is just an exercise
-                }
+                controller.setNextString(textField.getText());
+                controller.printCurrentString();
             }
         });
 
