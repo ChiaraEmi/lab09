@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
  * 
  */
 public final class SimpleGUI {
-    private final JFrame frame = new JFrame();
+    private final JFrame frame = new JFrame("My first Java graphical interface");
     private final Controller controller = new Controller();
 
     /**

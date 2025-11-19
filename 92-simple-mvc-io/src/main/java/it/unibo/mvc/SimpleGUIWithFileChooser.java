@@ -5,12 +5,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 /**
@@ -18,7 +20,7 @@ import java.awt.event.ActionEvent;
  * 
  */
 public final class SimpleGUIWithFileChooser {
-    private final JFrame frame = new JFrame();
+    private final JFrame frame = new JFrame("My second Java graphical interface");
     private final Controller controller = new Controller();
 
     /**
@@ -27,15 +29,33 @@ public final class SimpleGUIWithFileChooser {
     public SimpleGUIWithFileChooser() {
         final JPanel mainPanel = new JPanel();
         final JPanel panel = new JPanel();
+        final JTextArea textArea = new JTextArea();
+        final JButton save = new JButton("Save");
         final JTextField textField = new JTextField(controller.getFilePath());
         final JButton browse = new JButton("Browse");
+        textField.setEditable(false);
         mainPanel.setLayout(new BorderLayout());
         panel.setLayout(new BorderLayout());
-        mainPanel.add(panel, BorderLayout.NORTH);
+        mainPanel.add(textArea, BorderLayout.CENTER);
+        mainPanel.add(save, BorderLayout.SOUTH);
         panel.add(textField, BorderLayout.CENTER);
         panel.add(browse, BorderLayout.LINE_END);
+        mainPanel.add(panel, BorderLayout.NORTH);
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        save.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent event) {
+                try {
+                    controller.saveString(textArea.getText());
+                } catch (final IOException e) {
+                    JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
+            }
+        });
 
         browse.addActionListener(new ActionListener() {
 
